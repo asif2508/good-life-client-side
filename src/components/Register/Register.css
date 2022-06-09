@@ -1,0 +1,14 @@
+.register-page{
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+.register-style{
+    width: 40%;
+    box-shadow: rgba(0, 0, 0, 0.493) 0px 5px 15px;
+}
+
+@media screen and (max-width: 576px) {
+    .register-style{
+        width: 100%;
+    }
+}
