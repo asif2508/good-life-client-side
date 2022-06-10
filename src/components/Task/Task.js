@@ -1,16 +1,17 @@
 import { Button } from 'bootstrap';
 import React from 'react';
 import { Card, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const Task = ({ task }) => {
-    const { name, img } = task;
+    const { name, img, path } = task;
     return (
         <Col>
-            <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={img} />
+            <Card>
+                <Card.Img variant="top" height={250} src={img} />
                 <Card.Body>
                     <Card.Title>{name}</Card.Title>
-                    <button className='btn-style'>Get Started</button>
+                    <Link to={path} className='btn-style'>Get Started</Link>
                 </Card.Body>
             </Card>
         </Col>
