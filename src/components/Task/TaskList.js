@@ -2,10 +2,11 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import EditModal from '../EditModal/EditModal';
 
-const TaskList = ({post, handleDeleteItem, handleEdit }) => {
-    const { _id, name, desc, completed } = post;
-    const data = { completed: true };
+const TaskList = ({post, handleDeleteItem, handleEdit}) => {
+    const {_id, name} = post
     return (
         <Card className='mb-3 mt-4'>
             <Card.Header as="h5">Your Habit</Card.Header>
@@ -17,13 +18,7 @@ const TaskList = ({post, handleDeleteItem, handleEdit }) => {
                         <FontAwesomeIcon  icon={faTrash}></FontAwesomeIcon>
                     </button>
                 </div>
-
-                <Card.Text style={{
-                    textDecoration: completed ? 'line-through' : 'none'
-                }} className='text-start'>
-                    {desc}
-                </Card.Text>
-                <button onClick={() => handleEdit(_id, data)} className='main-btn ps-4 pe-4'>Edit</button>
+                <Link to={`/edit/${_id}`} className='main-btn ps-4 pe-4'>Edit</Link>
             </Card.Body>
         </Card>
     );

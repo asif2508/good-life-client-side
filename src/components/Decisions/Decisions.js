@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Col, Container, Form, Row } from 'react-bootstrap';
+import { toast } from 'react-toastify';
 import TaskList from '../Task/TaskList';
 import './Decisions.css';
 const Decisions = () => {
-    const [posts, setPosts] = useState([])
+    const [posts, setPosts] = useState([]);
     useEffect(() => {
-        fetch('https://powerful-reef-30073.herokuapp.com/posts')
+        fetch('http://localhost:5000/decisions')
             .then(res => res.json())
             .then(data => setPosts(data))
     }, [posts])
@@ -13,20 +14,25 @@ const Decisions = () => {
     const handleAddTask = event => {
         event.preventDefault()
         const name = event.target.name.value;
-        const desc = event.target.desc.value;
         const data = {
             name: name,
-            desc: desc,
-            completed: false
         };
-        fetch('https://powerful-reef-30073.herokuapp.com/posts', {
+        fetch('http://localhost:5000/decisions', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(data),
         })
-            .then(response => response.json())
+            .then(response => {
+                if(response.ok){
+                    response.json();
+                    toast.info('Habit edited Successfully!');
+                }
+                else{
+                    toast.error('Failed to add habit');
+                }
+            })
             .then(data => {
                 console.log('Success:', data);
             })
@@ -36,7 +42,7 @@ const Decisions = () => {
         event.target.reset();
     }
     const handleDeleteItem = id => {
-        const url = `https://powerful-reef-30073.herokuapp.com/posts/${id}`;
+        const url = `http://localhost:5000/decisions/${id}`;
         fetch(url, {
             method: 'DELETE',
             headers: {
@@ -44,23 +50,17 @@ const Decisions = () => {
             },
             body: JSON.stringify({ id }),
         })
-            .then(response => response.json())
+        .then(response => {
+            if(response.ok){
+                response.json();
+                toast.error('Habit deleted Successfully!');
+            }
+            else{
+                toast.error('Failed to delete habit');
+            }
+        })
             .then(data => {
                 console.log(data);
-            })
-    }
-
-    const handleEdit = (id, data) => {
-        fetch(`https://powerful-reef-30073.herokuapp.com/posts/${id}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log('Success:', data);
             })
     }
     return (
@@ -73,7 +73,6 @@ const Decisions = () => {
                                 key={post._id}
                                 post={post}
                                 handleDeleteItem={handleDeleteItem}
-                                handleEdit={handleEdit}
                             ></TaskList>)
                         }
                     </Col>
@@ -83,7 +82,7 @@ const Decisions = () => {
                             <form onSubmit={handleAddTask}>
                                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                                     <p className='label-text'>Habit Name</p>
-                                    <Form.Control name='name' type="text" placeholder="Habit Name" />
+                                    <Form.Control name='name' type="text" placeholder="Habit Name" required/>
                                 </Form.Group>
                                 <input type="submit" value="ADD" className='btn main-btn w-25' />
                             </form>
