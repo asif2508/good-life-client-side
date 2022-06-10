@@ -1,0 +1,28 @@
+.label-text{
+    text-align: left !important;
+    margin: 3px;
+    font-weight: bold;
+}
+.adding-task{
+    margin-top: 25px;
+    padding: 10px;
+    top: 25px;
+    position: sticky;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.main-btn{
+    background-color: rgb(0, 0, 0);
+    border: 1px solid white;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+.main-btn:hover{
+    background-color: white;
+    color: rgb(0, 0, 0);
+    border: 1px solid rgb(0, 0, 0);
+}
+.main-btn:active{
+    background-color: red;
+    color: white;
+}
