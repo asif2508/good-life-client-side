@@ -17,7 +17,7 @@
     border: 1px solid white;
     color: white;
     padding: 8px 12px;
-    border-radius: 50px;
+    border-radius: 10px;
 }
 .login-btn:hover{
     background-color: white;
@@ -38,7 +38,7 @@
     border: 1px solid white;
     color: white;
     padding: 8px 12px;
-    border-radius: 50px;
+    border-radius: 10px;
 }
 
 @media screen and (max-width: 576px) {

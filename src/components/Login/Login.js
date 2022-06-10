@@ -16,7 +16,7 @@ const Login = () => {
     const [signInWithGoogle, user1] = useSignInWithGoogle(auth);
     let location = useLocation();
 
-    let from = location.state?.from?.pathname || "/home";
+    let from = location.state?.from?.pathname || "/habits";
     if (loading) {
         return <Loading></Loading>
     }

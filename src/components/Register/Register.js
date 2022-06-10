@@ -22,7 +22,7 @@ const Register = () => {
         return <Loading></Loading>
     }
     if (user || user1) {
-        navigate('/home');
+        navigate('/habits');
     }
 
     const handleCreateUser = async (event) => {
@@ -46,7 +46,7 @@ const Register = () => {
             setMessage("Password length can't be less than 6!")
         }
         if (user) {
-            navigate('/home');
+            navigate('/habits');
         }
     }
     const handlesignInWithGoogle = () => {
