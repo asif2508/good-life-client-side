@@ -73,6 +73,7 @@ const Decisions = () => {
                                 key={post._id}
                                 post={post}
                                 handleDeleteItem={handleDeleteItem}
+                                page={`decisions`}
                             ></TaskList>)
                         }
                     </Col>

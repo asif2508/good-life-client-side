@@ -15,7 +15,7 @@ import Conflict from './components/Conflict/Conflict';
 import Driving from './components/Driving/Driving';
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import EditModal from './components/EditModal/EditModal';
+import EditItem from './components/EditItem/EditItem';
 function App() {
   return (
     <div className="App">
@@ -28,7 +28,7 @@ function App() {
         <Route path='/influencing' element={<RequiredAuth> <Influencing></Influencing> </RequiredAuth>}></Route>
         <Route path='/conflict' element={<RequiredAuth> <Conflict></Conflict> </RequiredAuth>}></Route>
         <Route path='/driving' element={<RequiredAuth> <Driving></Driving> </RequiredAuth>}></Route>
-        <Route path='/edit/:_id' element={<RequiredAuth> <EditModal></EditModal> </RequiredAuth>}></Route>
+        <Route path='/edit/:_id' element={<RequiredAuth> <EditItem></EditItem> </RequiredAuth>}></Route>
 
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>

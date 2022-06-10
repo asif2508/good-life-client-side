@@ -3,9 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import EditModal from '../EditModal/EditModal';
 
-const TaskList = ({post, handleDeleteItem, handleEdit}) => {
+const TaskList = ({post, handleDeleteItem,page}) => {
     const {_id, name} = post
     return (
         <Card className='mb-3 mt-4'>
@@ -18,7 +17,7 @@ const TaskList = ({post, handleDeleteItem, handleEdit}) => {
                         <FontAwesomeIcon  icon={faTrash}></FontAwesomeIcon>
                     </button>
                 </div>
-                <Link to={`/edit/${_id}`} className='main-btn ps-4 pe-4'>Edit</Link>
+                <Link to={`/edit/${_id}?page=${page}`} className='main-btn ps-4 pe-4'>Edit</Link>
             </Card.Body>
         </Card>
     );

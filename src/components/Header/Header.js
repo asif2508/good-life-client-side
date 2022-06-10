@@ -4,6 +4,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import { signOut } from 'firebase/auth';
+import './Header.css';
 const Header = () => {
     const [user] = useAuthState(auth);
     const navigate = useNavigate();
@@ -23,7 +24,7 @@ const Header = () => {
                                 user ?
                                     <>
                                         <Nav.Link as={Link} to='/habits' href="#habits">Habits</Nav.Link>
-                                        <button onClick={handleLogout} className='btn btn-danger'>Sign Out</button>
+                                        <button onClick={handleLogout} className='signout-btn'>Sign Out</button>
                                     </>
                                     :
                                     <>

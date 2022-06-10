@@ -1,4 +1,3 @@
-import { Button } from 'bootstrap';
 import React from 'react';
 import { Card, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -10,8 +9,8 @@ const Task = ({ task }) => {
             <Card>
                 <Card.Img variant="top" height={250} src={img} />
                 <Card.Body>
-                    <Card.Title>{name}</Card.Title>
-                    <Link to={path} className='btn-style'>Get Started</Link>
+                    <h5 className='mb-3'>{name}</h5>
+                    <Link to={path} className='btn-style mt-3'>Get Started</Link>
                 </Card.Body>
             </Card>
         </Col>

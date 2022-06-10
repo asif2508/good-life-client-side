@@ -1,38 +1,37 @@
-import { Button, Card, Form } from 'react-bootstrap';
-import { Modal } from 'react-bootstrap';
+import { Card, Form } from 'react-bootstrap';
 import React, { useState } from 'react';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-const EditModal = () => {
-    const {_id} = useParams();
+const EditItem = () => {
+    const { _id } = useParams();
     const [text, setText] = useState('');
-    // const navigate = useNavigate();
-    // let location = useLocation();
-    // let from = location.pathname.split('/')[1];
+    const [searchParams] = useSearchParams();
+    const query = searchParams.get('page')
+    const navigate = useNavigate();
 
     const handleInput = e => {
         const habitName = e.target.value;
         setText(habitName);
 
     }
-    const handleEdit = (_id, data) => {
-        fetch(`http://localhost:5000/decisions/${_id}`, {
+    const handleEdit = (_id, data, query) => {
+        fetch(`http://localhost:5000/${query}/${_id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(data),
         })
-        .then(response => {
-            if(response.ok){
-                response.json();
-                toast.info('Habit edited Successfully!');
-            }
-            else{
-                toast.error('Failed to edit habit');
-            }
-        })
+            .then(response => {
+                if (response.ok) {
+                    response.json();
+                    toast.info('Habit edited Successfully!');
+                }
+                else {
+                    toast.error('Failed to edit habit');
+                }
+            })
             .then((data) => {
                 console.log('Success:', data);
             })
@@ -41,12 +40,11 @@ const EditModal = () => {
         const data = {
             name: text,
         }
-        handleEdit(_id, data);
+        handleEdit(_id, data, query);
     }
-    // const handleGetBack = () =>{
-    //     navigate(window.history.previous.href);
-    //     console.log(from);
-    // }
+    const handleGetBack = () =>{
+        navigate(-1);
+    }
     return (
         <div className='d-flex justify-content-center '>
             <Card className='w-50 m-5'>
@@ -58,13 +56,13 @@ const EditModal = () => {
                     <button className='main-btn' onClick={handleEditConfirm}>
                         Confirm
                     </button>
-                    {/* <button onClick={handleGetBack} className='main-btn'>
+                    <button onClick={handleGetBack} className='main-btn'>
                        Back
-                    </button> */}
+                    </button>
                 </Card.Body>
             </Card>
         </div>
     );
 };
 
-export default EditModal;
+export default EditItem;

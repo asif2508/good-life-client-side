@@ -16,6 +16,7 @@
     color: white;
     padding: 8px 12px;
     border-radius: 5px;
+    text-decoration: none;
 }
 .main-btn:hover{
     background-color: white;
