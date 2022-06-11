@@ -6,7 +6,11 @@ import TaskList from '../Task/TaskList';
 const Conflict = () => {
     const [posts, setPosts] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/conflict')
+        fetch('http://localhost:5000/conflict',{
+            headers: {
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
             .then(res => res.json())
             .then(data => setPosts(data))
     }, [posts])

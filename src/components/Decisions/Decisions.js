@@ -6,7 +6,11 @@ import './Decisions.css';
 const Decisions = () => {
     const [posts, setPosts] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/decisions')
+        fetch('http://localhost:5000/decisions',{
+            headers: {
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
             .then(res => res.json())
             .then(data => setPosts(data))
     }, [posts])

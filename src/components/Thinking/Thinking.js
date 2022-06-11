@@ -6,7 +6,11 @@ import TaskList from '../Task/TaskList';
 const Thinking = () => {
     const [posts, setPosts] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/thinking')
+        fetch('http://localhost:5000/thinking',{
+            headers: {
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
             .then(res => res.json())
             .then(data => setPosts(data))
     }, [posts])

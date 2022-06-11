@@ -5,6 +5,7 @@ import auth from '../../firebase.init';
 import {useSignInWithEmailAndPassword, useSignInWithGoogle} from 'react-firebase-hooks/auth';
 import Loading from '../Loading/Loading';
 import './Login.css';
+import useToken from '../../hooks/useToken';
 const Login = () => {
     const [
         signInWithEmailAndPassword,
@@ -15,12 +16,13 @@ const Login = () => {
     const navigate = useNavigate();
     const [signInWithGoogle, user1] = useSignInWithGoogle(auth);
     let location = useLocation();
+    const [token] = useToken(user || user1)
 
     let from = location.state?.from?.pathname || "/habits";
     if (loading) {
         return <Loading></Loading>
     }
-    if(user || user1){
+    if(token){
         navigate(from, { replace: true });
     }
     const handlesignIn = async event => {

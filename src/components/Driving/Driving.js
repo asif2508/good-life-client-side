@@ -6,7 +6,11 @@ import TaskList from '../Task/TaskList';
 const Driving = () => {
     const [posts, setPosts] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/driving')
+        fetch('http://localhost:5000/driving',{
+            headers: {
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
             .then(res => res.json())
             .then(data => setPosts(data))
     }, [posts])

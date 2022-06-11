@@ -3,6 +3,7 @@ import { Container, FloatingLabel, Form } from 'react-bootstrap';
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import useToken from '../../hooks/useToken';
 import Loading from '../Loading/Loading';
 import './Register.css';
 const Register = () => {
@@ -17,11 +18,11 @@ const Register = () => {
     const [signInWithGoogle, user1] = useSignInWithGoogle(auth);
     const [message, setMessage] = useState('');
     const [checkValue, setCheckValue] = useState(false);
-
+    const [token] = useToken(user || user1);
     if (loading || updating) {
         return <Loading></Loading>
     }
-    if (user || user1) {
+    if (token) {
         navigate('/habits');
     }
 
