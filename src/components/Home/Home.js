@@ -12,7 +12,7 @@ const Home = () => {
     return (
         <div className='py-5'>
             <Container>
-                <Row xs={12} md={6} lg={3} className='gy-3'>
+                <Row className='gy-3'>
                     {
                         tasks.map(task => <Task
                             task={task}

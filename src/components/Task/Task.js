@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Task = ({ task }) => {
     const { name, img, path } = task;
     return (
-        <Col>
+        <Col  xs={12} sm={12} md={6} lg={4}>
             <Card>
                 <Card.Img variant="top" height={250} src={img} />
                 <Card.Body>
