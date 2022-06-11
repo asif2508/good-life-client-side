@@ -6,7 +6,7 @@ import TaskList from '../Task/TaskList';
 const Influencing = () => {
     const [posts, setPosts] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/influencing',{
+        fetch('https://blooming-meadow-29347.herokuapp.com/influencing',{
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
             }
@@ -21,7 +21,7 @@ const Influencing = () => {
         const data = {
             name: name,
         };
-        fetch('http://localhost:5000/influencing', {
+        fetch('https://blooming-meadow-29347.herokuapp.com/influencing', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -46,7 +46,7 @@ const Influencing = () => {
         event.target.reset();
     }
     const handleDeleteItem = id => {
-        const url = `http://localhost:5000/influencing/${id}`;
+        const url = `https://blooming-meadow-29347.herokuapp.com/influencing/${id}`;
         fetch(url, {
             method: 'DELETE',
             headers: {

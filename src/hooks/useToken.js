@@ -6,7 +6,7 @@ const useToken = user => {
         const postReq = async () => {
             const email = user?.user?.email;
             if(email){
-                await fetch('http://localhost:5000/login', {
+                await fetch('https://blooming-meadow-29347.herokuapp.com/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -6,7 +6,7 @@ import TaskList from '../Task/TaskList';
 const Conflict = () => {
     const [posts, setPosts] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/conflict',{
+        fetch('https://blooming-meadow-29347.herokuapp.com/conflict',{
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
             }
@@ -21,7 +21,7 @@ const Conflict = () => {
         const data = {
             name: name,
         };
-        fetch('http://localhost:5000/conflict', {
+        fetch('https://blooming-meadow-29347.herokuapp.com/conflict', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -46,7 +46,7 @@ const Conflict = () => {
         event.target.reset();
     }
     const handleDeleteItem = id => {
-        const url = `http://localhost:5000/conflict/${id}`;
+        const url = `https://blooming-meadow-29347.herokuapp.com/conflict/${id}`;
         fetch(url, {
             method: 'DELETE',
             headers: {

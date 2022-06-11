@@ -16,7 +16,7 @@ const EditItem = () => {
 
     }
     const handleEdit = (_id, data, query) => {
-        fetch(`http://localhost:5000/${query}/${_id}`, {
+        fetch(`https://blooming-meadow-29347.herokuapp.com/${query}/${_id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

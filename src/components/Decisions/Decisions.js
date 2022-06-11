@@ -6,7 +6,7 @@ import './Decisions.css';
 const Decisions = () => {
     const [posts, setPosts] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/decisions',{
+        fetch('https://blooming-meadow-29347.herokuapp.com/decisions',{
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
             }
@@ -21,7 +21,7 @@ const Decisions = () => {
         const data = {
             name: name,
         };
-        fetch('http://localhost:5000/decisions', {
+        fetch('https://blooming-meadow-29347.herokuapp.com/decisions', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -46,7 +46,7 @@ const Decisions = () => {
         event.target.reset();
     }
     const handleDeleteItem = id => {
-        const url = `http://localhost:5000/decisions/${id}`;
+        const url = `https://blooming-meadow-29347.herokuapp.com/decisions/${id}`;
         fetch(url, {
             method: 'DELETE',
             headers: {

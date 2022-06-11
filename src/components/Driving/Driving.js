@@ -6,7 +6,7 @@ import TaskList from '../Task/TaskList';
 const Driving = () => {
     const [posts, setPosts] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/driving',{
+        fetch('https://blooming-meadow-29347.herokuapp.com/driving',{
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
             }
@@ -21,7 +21,7 @@ const Driving = () => {
         const data = {
             name: name,
         };
-        fetch('http://localhost:5000/driving', {
+        fetch('https://blooming-meadow-29347.herokuapp.com/driving', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -46,7 +46,7 @@ const Driving = () => {
         event.target.reset();
     }
     const handleDeleteItem = id => {
-        const url = `http://localhost:5000/driving/${id}`;
+        const url = `https://blooming-meadow-29347.herokuapp.com/driving/${id}`;
         fetch(url, {
             method: 'DELETE',
             headers: {

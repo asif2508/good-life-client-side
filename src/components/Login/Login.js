@@ -53,7 +53,7 @@ const Login = () => {
                             <Form.Control type="password" name='password' placeholder="Password" />
 
                         </FloatingLabel>
-                        {error && <p className='text-danger mt-1 mb-0'>{error.message}</p>}
+                        {error && <p className='text-danger mt-1 mb-0 text-start'><small>{error.message}</small></p>}
                         <button className='w-100 mt-3 login-btn' type="submit">Login</button>
                     </form>
                     <p className='text-start m-2'>Don't have an account?<Link className='text-primary ms-1 fw-bold' to='/register'>Register</Link> </p>

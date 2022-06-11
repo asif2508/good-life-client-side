@@ -77,8 +77,8 @@ const Register = () => {
                         <FloatingLabel controlId="floatingPassword" label="Confirm Password">
                             <Form.Control type="password" name="confirmPassword" placeholder="Confirm Password" />
                         </FloatingLabel>
-                        {error && <p className='text-danger mb-0 mt-2 text-start'>{error.message}</p>}
-                        {message && <p className='text-danger mb-0 mt-2 text-start'>{message}</p>}
+                        {error && <p className='text-danger mb-0 mt-2 text-start'><small>{error.message}</small></p>}
+                        {message && <p className='text-danger mb-0 mt-2 text-start'><small>{message}</small></p>}
 
                         <Form.Group className="mb-3" controlId="formBasicCheckbox">
                             <Form.Check onClick={() => setCheckValue(!checkValue)} className='text-start m-2 mb-0' type="checkbox" label="Accept terms and conditions" name='terms' id='terms' />
