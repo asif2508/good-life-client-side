@@ -87,7 +87,7 @@ const Thinking = () => {
                             <form onSubmit={handleAddTask}>
                                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                                     <p className='label-text'>Habit Name</p>
-                                    <Form.Control name='name' type="text" placeholder="Habit Name" required/>
+                                    <Form.Control name='name' type="text" placeholder="Habit Name"  as="textarea" rows={5} required/>
                                 </Form.Group>
                                 <input type="submit" value="ADD" className='btn main-btn w-25' />
                             </form>
